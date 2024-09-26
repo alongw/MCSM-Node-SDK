@@ -1,3 +1,4 @@
+import { parseConfig } from '@/utils/index'
 import type { MCSM_CONSTRUCTOR_CONFIG } from '@/types/index'
 
 /**
@@ -10,7 +11,7 @@ export class MCSM {
     #baseURL: string
 
     constructor(config: MCSM_CONSTRUCTOR_CONFIG) {
-        const { api_key, panel_url } = config
+        const { api_key, panel_url } = parseConfig(config)
         this.#apikey = api_key
         this.#baseURL = panel_url
     }
