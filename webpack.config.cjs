@@ -61,10 +61,6 @@ module.exports = {
                         json.type = 'commonjs'
                         return JSON.stringify(json, null, 2)
                     }
-                },
-                {
-                    from: './template',
-                    to: path.resolve(__dirname, 'dist/template')
                 }
             ]
         })
