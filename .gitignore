@@ -1,0 +1,11 @@
+node_modules
+config.yaml
+
+# Logs
+logs
+
+# tempfile
+/temp
+
+sso.7z.backup
+sso.7z
