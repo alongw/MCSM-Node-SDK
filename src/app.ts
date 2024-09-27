@@ -13,17 +13,25 @@ import type { MCSM_CONSTRUCTOR_CONFIG } from '@/types/index'
 export class MCSManagerClient {
     #apikey: string
     #baseURL: string
-    request: AxiosInstance
+    #request: AxiosInstance
 
     constructor(config: MCSM_CONSTRUCTOR_CONFIG) {
         const { api_key, panel_url, auto_catch_http_error } = parseConfig(config)
         this.#apikey = api_key
         this.#baseURL = panel_url
-        this.request = newRequest(this.#baseURL, this.#apikey, auto_catch_http_error)
+        this.#request = newRequest(this.#baseURL, this.#apikey, auto_catch_http_error)
+    }
+
+    get request() {
+        return this.#request
+    }
+
+    get baseURL() {
+        return this.#baseURL
     }
 
     async getOverview() {
-        const result = await getOverviewApi(this.request)
+        const result = await getOverviewApi(this.#request)
         return result
     }
 }
@@ -35,4 +43,4 @@ const mcsm = new MCSManagerClient({
     auto_catch_http_error: true
 })
 const result = await mcsm.getOverview()
-console.log(result.data)
+console.log(result.data.status)
