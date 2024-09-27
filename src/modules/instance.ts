@@ -1,12 +1,13 @@
-import {} from '@/types/instance'
+// import {} from '@/types/instance'
+import { Deamon } from '@/modules/daemon'
 
 export class Instance {
     #InstanceUUID: string
-    #DaemonUUID: string
+    #Daemon: Deamon
 
-    constructor(InstanceUUID: string, DaemonUUID: string) {
+    constructor(InstanceUUID: string, Daemon: Deamon) {
         this.#InstanceUUID = InstanceUUID
-        this.#DaemonUUID = DaemonUUID
+        this.#Daemon = Daemon
     }
 
     get InstanceUUID() {
@@ -14,6 +15,6 @@ export class Instance {
     }
 
     get DaemonUUID() {
-        return this.#DaemonUUID
+        return this.#Daemon.daemonUUID
     }
 }
