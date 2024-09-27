@@ -1,5 +1,8 @@
 import type { AxiosInstance } from 'axios'
 import type { Response } from '@/types/request'
+import type { CreateDaemonDate } from '@/types/daemon'
+
+export * from '@/types/daemon'
 
 export const removeDaemon = (request: AxiosInstance, daemonUUID: string) => {
     return request.delete<Response<boolean>>(`/service/remote_service`, {
@@ -35,15 +38,6 @@ export const updateDaemon = (
     })
 }
 
-export const addDaemon = (
-    request: AxiosInstance,
-    data: {
-        ip: string
-        port: number
-        prefix: string
-        remarks: string
-        apiKey: string
-    }
-) => {
+export const addDaemon = (request: AxiosInstance, data: CreateDaemonDate) => {
     return request.post<Response<string>>(`/service/remote_service`, data)
 }

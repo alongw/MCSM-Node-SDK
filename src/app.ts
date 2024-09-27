@@ -1,6 +1,7 @@
 import { parseConfig } from '@/utils/index'
 import { newRequest } from '@/utils/request'
 import { getOverview as getOverviewApi } from '@/apis/overview'
+import { Deamon, addDaemon, type CreateDaemonDate } from '@/modules/daemon'
 
 import type { AxiosInstance } from 'axios'
 import type { MCSM_CONSTRUCTOR_CONFIG } from '@/types/index'
@@ -31,8 +32,15 @@ export class MCSManagerClient {
     }
 
     async getOverview() {
-        const result = await getOverviewApi(this.#request)
-        return result
+        return await getOverviewApi(this.#request)
+    }
+
+    useDaemon(DaemonUUID: string) {
+        return new Deamon(this.#request, DaemonUUID)
+    }
+
+    addDaemon(data: CreateDaemonDate) {
+        return addDaemon(this.#request, data)
     }
 }
 
@@ -42,5 +50,3 @@ const mcsm = new MCSManagerClient({
     panel_url: 'http://localhost:23333/api',
     auto_catch_http_error: true
 })
-const result = await mcsm.getOverview()
-console.log(result.data.status)
