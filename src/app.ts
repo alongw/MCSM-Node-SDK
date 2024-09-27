@@ -32,7 +32,7 @@ export class MCSManagerClient {
 const mcsm = new MCSManagerClient({
     api_key: 'ab57c1ee640d4c168df79a8d2fa8f535',
     panel_url: 'http://localhost:23333/api',
-    auto_catch_http_error: false
+    auto_catch_http_error: true
 })
 const result = await mcsm.getOverview()
 console.log(result.data)
