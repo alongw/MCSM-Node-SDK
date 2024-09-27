@@ -5,3 +5,7 @@ export interface CreateDaemonDate {
     remarks: string
     apiKey: string
 }
+
+export interface UpdateDaemonDate extends CreateDaemonDate {
+    available: boolean
+}

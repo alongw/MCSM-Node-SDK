@@ -1,6 +1,6 @@
 import type { AxiosInstance } from 'axios'
 import type { Response } from '@/types/request'
-import type { CreateDaemonDate } from '@/types/daemon'
+import type { CreateDaemonDate, UpdateDaemonDate } from '@/types/daemon'
 
 export * from '@/types/daemon'
 
@@ -23,19 +23,19 @@ export const linkDaemon = (request: AxiosInstance, daemonUUID: string) => {
 export const updateDaemon = (
     request: AxiosInstance,
     daemonUUID: string,
-    data: {
-        ip: string
-        port: number
-        prefix: string
-        available: boolean
-        remarks: string
-        apiKey: string
-    }
+    data: UpdateDaemonDate
 ) => {
-    return request.put<Response<boolean>>(`/service/remote_service`, {
-        uuid: daemonUUID,
-        ...data
-    })
+    return request.put<Response<boolean>>(
+        `/service/remote_service`,
+        {
+            ...data
+        },
+        {
+            params: {
+                uuid: daemonUUID
+            }
+        }
+    )
 }
 
 export const addDaemon = (request: AxiosInstance, data: CreateDaemonDate) => {

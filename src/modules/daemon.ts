@@ -1,7 +1,10 @@
 import {
     removeDaemon,
     addDaemon as addDaemonApi,
-    type CreateDaemonDate
+    linkDaemon,
+    updateDaemon,
+    type CreateDaemonDate,
+    type UpdateDaemonDate
 } from '@/apis/daemon'
 
 import { AxiosInstance } from 'axios'
@@ -23,6 +26,16 @@ export class Deamon {
 
     remove = async () => {
         const result = await removeDaemon(this.#request, this.#daemonUUID)
+        return result
+    }
+
+    link = async () => {
+        const result = await linkDaemon(this.#request, this.#daemonUUID)
+        return result
+    }
+
+    update = async (data: UpdateDaemonDate) => {
+        const result = await updateDaemon(this.#request, this.#daemonUUID, data)
         return result
     }
 }
