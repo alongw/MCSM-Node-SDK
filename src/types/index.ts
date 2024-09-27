@@ -4,5 +4,5 @@ export interface MCSM_PANEL_CONFIG {
 }
 
 export interface MCSM_CONSTRUCTOR_CONFIG extends MCSM_PANEL_CONFIG {
-    // ...
+    auto_catch_http_error?: boolean
 }

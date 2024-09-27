@@ -2,9 +2,13 @@ import axios, { type AxiosResponse } from 'axios'
 
 export * from '@/types/request'
 
-import type { Result } from '@/types/request'
+import type { Response } from '@/types/request'
 
-export const newRequest = (baseURL: string, apikey: string) => {
+export const newRequest = (
+    baseURL: string,
+    apikey: string,
+    auto_catch_http_error: boolean
+) => {
     const request = axios.create({
         baseURL
     })
@@ -21,7 +25,7 @@ export const newRequest = (baseURL: string, apikey: string) => {
     }
 
     request.interceptors.response.use(
-        (response: AxiosResponse): AxiosResponse<Result> => {
+        (response: AxiosResponse): AxiosResponse<Response> => {
             response.data = {
                 status: response.data.status || response.status,
                 msg: response.data.msg || response.data.message || response.statusText,
@@ -30,7 +34,18 @@ export const newRequest = (baseURL: string, apikey: string) => {
             return response
         },
         (error) => {
-            return Promise.reject(error)
+            if (!auto_catch_http_error) return Promise.reject(error)
+            return Promise.resolve({
+                data: {
+                    status: error.response?.data?.status || error.response?.status,
+                    msg:
+                        error.response?.data?.msg ||
+                        error.response?.data?.message ||
+                        error.response?.statusText,
+                    data: error.response?.data?.data || undefined,
+                    originError: error
+                }
+            })
         }
     )
 

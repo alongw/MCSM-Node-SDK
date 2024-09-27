@@ -1,4 +1,4 @@
-interface SystemUser {
+export interface SystemUser {
     uid: number // 用户 ID
     gid: number // 用户组 ID
     username: string // 用户名
@@ -6,7 +6,7 @@ interface SystemUser {
     shell: string | null // 用户 shell
 }
 
-interface SystemInfo {
+export interface SystemInfo {
     user: SystemUser
     time: number // 时间戳
     totalmem: number // 总内存
@@ -22,52 +22,52 @@ interface SystemInfo {
     cpu: number // CPU 使用率
 }
 
-interface ProcessInfo {
+export interface ProcessInfo {
     cpu: number // CPU 使用率
     memory: number // 内存使用量
     cwd: string // 当前工作目录
 }
 
-interface RecordInfo {
+export interface RecordInfo {
     logined: number // 登录次数
     illegalAccess: number // 非法访问次数
     banips: number // 被禁止的 IP 数量
     loginFailed: number // 登录失败次数
 }
 
-interface ChartSystemData {
+export interface ChartSystemData {
     cpu: number // CPU 使用率
     mem: number // 内存使用率
 }
 
-interface ChartRequestData {
+export interface ChartRequestData {
     value: number // 请求数
     totalInstance: number // 总实例数
     runningInstance: number // 运行中的实例数
 }
 
-interface ChartInfo {
+export interface ChartInfo {
     system: ChartSystemData[]
     request: ChartRequestData[]
 }
 
-interface RemoteCount {
+export interface RemoteCount {
     available: number // 可用数量
     total: number // 总数量
 }
 
-interface DaemonProcessInfo {
+export interface DaemonProcessInfo {
     cpu: number // CPU 使用量
     memory: number // 内存使用量
     cwd: string // 当前工作目录
 }
 
-interface DaemonInstance {
+export interface DaemonInstance {
     running: number // 运行中的实例数
     total: number // 实例总数
 }
 
-interface DaemonSystemInfo {
+export interface DaemonSystemInfo {
     type: string // 操作系统类型
     hostname: string // 主机名
     platform: string // 平台
@@ -83,12 +83,12 @@ interface DaemonSystemInfo {
     processMem: number // 进程内存使用量
 }
 
-interface DaemonCpuMemChart {
+export interface DaemonCpuMemChart {
     cpu: number // CPU 使用率
     mem: number // 内存使用率
 }
 
-interface DaemonRemote {
+export interface DaemonRemote {
     version: string // Daemon 版本
     process: DaemonProcessInfo // 进程信息
     instance: DaemonInstance // 实例信息
@@ -116,3 +116,5 @@ export interface Overview {
     remoteCount: RemoteCount // 远程节点计数
     remote: DaemonRemote[] // Daemon 列表
 }
+
+export default Overview
