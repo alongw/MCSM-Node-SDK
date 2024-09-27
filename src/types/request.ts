@@ -1,4 +1,4 @@
-export interface REQUEST_TYPE<T extends any> {
+export interface Result<T extends any = any> {
     status: number
     msg: string
     data: T
