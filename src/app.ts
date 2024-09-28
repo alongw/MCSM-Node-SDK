@@ -33,8 +33,8 @@ export class MCSManagerClient {
         return this.#baseURL
     }
 
-    async getOverview() {
-        return await getOverviewApi(this.#request)
+    getOverview() {
+        return getOverviewApi(this.#request)
     }
 
     useDaemon(DaemonUUID: string) {
