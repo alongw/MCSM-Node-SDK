@@ -1,0 +1,54 @@
+{
+  "name": "mcsm-node-sdk",
+  "version": "1.0.0",
+  "description": "A Node.js SDK for MCSManager",
+  "main": "./dist/app.js",
+  "types": "./dist/app.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alongw/mcsm-node-sdk.git"
+  },
+  "author": "alongw <alongw@alongw.cn>",
+  "license": "AGPL-3.0",
+  "type": "commonjs",
+  "scripts": {
+    "lint": "eslint .",
+    "format": "prettier --write --cache .",
+    "dev": "nodemon --config nodemon.json",
+    "dev:old": "nodemon -x node --no-warnings --experimental-specifier-resolution=node --loader ts-node/esm src/app.ts",
+    "build": "npx webpack",
+    "build:old": "npx eslint . && npx tsx ./script/build.ts",
+    "build:nolint": "npx tsx ./script/build.ts",
+    "start": "tsx ./src/app.ts",
+    "start:ts": "ts-node-esm --experimental-specifier-resolution=node src/app.ts",
+    "start:node": "node --es-module-specifier-resolution=node dist/app.js",
+    "build:tsc": "tsc"
+  },
+  "devDependencies": {
+    "@types/axios": "^0.14.0",
+    "@types/lodash": "^4.17.9",
+    "@types/node": "^20.4.0",
+    "@typescript-eslint/eslint-plugin": "^6.13.1",
+    "@typescript-eslint/parser": "^6.13.1",
+    "clean-webpack-plugin": "^4.0.0",
+    "copy-webpack-plugin": "^12.0.2",
+    "eslint": "^8.55.0",
+    "node-polyfill-webpack-plugin": "^3.0.0",
+    "nodemon": "^2.0.22",
+    "ts-loader": "^9.5.1",
+    "ts-node": "^10.9.1",
+    "tsconfig-paths": "^4.2.0",
+    "tsx": "^4.7.0",
+    "typescript": "^5.6.2",
+    "webpack": "^5.90.3",
+    "webpack-cli": "^5.1.4",
+    "webpack-node-externals": "^3.0.0"
+  },
+  "lint-staged": {
+    "*.{vue,js,ts,jsx,tsx,md,json}": "prettier --write"
+  },
+  "dependencies": {
+    "axios": "^1.7.7",
+    "lodash": "^4.17.21"
+  }
+}
