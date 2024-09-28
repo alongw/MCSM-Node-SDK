@@ -10,4 +10,4 @@ logs
 sso.7z.backup
 sso.7z
 
-dist
+# dist
