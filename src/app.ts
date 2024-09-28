@@ -9,11 +9,6 @@ import type { AxiosInstance } from 'axios'
 import type { MCSM_CONSTRUCTOR_CONFIG } from '@/types/index'
 import type { InstanceConfig } from '@/types/instance'
 
-/**
- * @class MCSM
- * @description Main class for the MCSM
- * @param {MCSM_CONSTRUCTOR_CONFIG} config - Configuration object for the MCSM
- */
 export class MCSManagerClient {
     #apikey: string
     #baseURL: string
