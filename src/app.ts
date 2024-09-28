@@ -65,10 +65,3 @@ export class MCSManagerClient {
         return multiWorkerInstance(this.#request, instance, config)
     }
 }
-
-// test code
-const mcsm = new MCSManagerClient({
-    api_key: 'ab57c1ee640d4c168df79a8d2fa8f535',
-    panel_url: 'http://localhost:23333/api',
-    auto_catch_http_error: true
-})
