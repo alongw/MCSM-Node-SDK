@@ -204,7 +204,7 @@ export const getOutput = (
     instanceUUID: string,
     daemonUUID: string,
     config?: {
-        size: string
+        size: number
     }
 ) => {
     return request.get<Response<string>>(`/protected_instance/output`, {
