@@ -123,6 +123,33 @@ export class Instance {
     }
 }
 
-export const addInstance = (request: AxiosInstance, data: InstanceConfig) => {
-    return createInstance(request, data)
+export const addInstance = async (
+    request: AxiosInstance,
+    data: InstanceConfig,
+    daemon: Deamon
+) => {
+    const result = await createInstance(request, daemon.daemonUUID, data)
+    if (result.status !== 200 || result.data.status !== 200) return undefined
+
+    const instance = new Instance(request, result.data.data.instanceUuid, daemon)
+    return instance
+}
+
+export const multiWorkerInstance = (
+    request: AxiosInstance,
+    instance: Instance[],
+    config: {
+        method: 'start' | 'stop' | 'restart' | 'kill'
+    }
+) => {
+    return multiWorker(
+        request,
+        instance.map((e) => {
+            return {
+                instanceUUID: e.InstanceUUID,
+                daemonUUID: e.DaemonUUID
+            }
+        }),
+        config
+    )
 }

@@ -3,7 +3,7 @@ import { newRequest } from '@/utils/request'
 import { getOverview as getOverviewApi } from '@/apis/overview'
 
 import { Deamon, addDaemon, type CreateDaemonDate } from '@/modules/daemon'
-import { Instance, addInstance } from '@/modules/instance'
+import { Instance, addInstance, multiWorkerInstance } from '@/modules/instance'
 
 import type { AxiosInstance } from 'axios'
 import type { MCSM_CONSTRUCTOR_CONFIG } from '@/types/index'
@@ -51,8 +51,18 @@ export class MCSManagerClient {
         return new Instance(this.#request, InstanceUUID, daemon)
     }
 
-    addInstance(data: InstanceConfig) {
-        return addInstance(this.#request, data)
+    addInstance(data: InstanceConfig, daemon: string | Deamon) {
+        daemon = typeof daemon === 'string' ? this.useDaemon(daemon) : daemon
+        return addInstance(this.#request, data, daemon)
+    }
+
+    multiWorkerInstance(
+        instance: Instance[],
+        config: {
+            method: 'start' | 'stop' | 'restart' | 'kill'
+        }
+    ) {
+        return multiWorkerInstance(this.#request, instance, config)
     }
 }
 
@@ -62,3 +72,14 @@ const mcsm = new MCSManagerClient({
     panel_url: 'http://localhost:23333/api',
     auto_catch_http_error: true
 })
+
+const myDaemon = mcsm.useDaemon('684fd0031b85418188283fc51adacb8f')
+
+console.log('-------------------------------------')
+const { data: result } = await myDaemon.link()
+console.log(result)
+console.log('-------------------------------------')
+
+const myInstance = mcsm.useInstance('26ec42bdfb144584892184001244ff6c', myDaemon)
+const { data: result2 } = await myInstance.kill()
+console.log(result2)

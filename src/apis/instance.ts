@@ -20,13 +20,21 @@ export const getInstanceDetail = (
     })
 }
 
-export const createInstance = (request: AxiosInstance, config: InstanceConfig) => {
+export const createInstance = (
+    request: AxiosInstance,
+    daemonId: string,
+    config: InstanceConfig
+) => {
     return request.post<
         Response<{
             instanceUuid: string
             config: InstanceConfig
         }>
-    >(`/instance`, config)
+    >(`/instance`, config, {
+        params: {
+            daemonId: daemonId
+        }
+    })
 }
 
 export const updateInstanceConfig = (
