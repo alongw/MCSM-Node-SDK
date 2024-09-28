@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "description": "nia-sso-service",
     "main": "./dist/app.js",
-    "repository": "mcsm-node-sdk",
+    "repository": "A Node.js SDK for MCSManager",
     "author": "alongw <alongw@alongw.cn>",
     "license": "AGPL-3.0",
     "type": "module",
