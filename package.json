@@ -1,6 +1,6 @@
 {
     "name": "mcsm-node-sdk",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "A Node.js SDK for MCSManager",
     "main": "./dist/app.js",
     "types": "./dist/app.d.ts",
