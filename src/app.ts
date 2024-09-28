@@ -72,14 +72,3 @@ const mcsm = new MCSManagerClient({
     panel_url: 'http://localhost:23333/api',
     auto_catch_http_error: true
 })
-
-const myDaemon = mcsm.useDaemon('684fd0031b85418188283fc51adacb8f')
-
-console.log('-------------------------------------')
-const { data: result } = await myDaemon.link()
-console.log(result)
-console.log('-------------------------------------')
-
-const myInstance = mcsm.useInstance('26ec42bdfb144584892184001244ff6c', myDaemon)
-const { data: result2 } = await myInstance.kill()
-console.log(result2)
