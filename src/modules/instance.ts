@@ -1,9 +1,10 @@
 // import {} from '@/types/instance'
 import { Deamon } from '@/modules/daemon'
 
-import { getInstanceDetail } from '@/apis/instance'
+import { getInstanceDetail, createInstance } from '@/apis/instance'
 
 import type { AxiosInstance } from 'axios'
+import type { InstanceConfig } from '@/types/instance'
 
 export class Instance {
     #InstanceUUID: string
@@ -36,4 +37,8 @@ export class Instance {
         )
         return result
     }
+}
+
+export const addInstance = (request: AxiosInstance, data: InstanceConfig) => {
+    return createInstance(request, data)
 }

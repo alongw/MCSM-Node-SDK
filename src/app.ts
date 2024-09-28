@@ -3,10 +3,11 @@ import { newRequest } from '@/utils/request'
 import { getOverview as getOverviewApi } from '@/apis/overview'
 
 import { Deamon, addDaemon, type CreateDaemonDate } from '@/modules/daemon'
-import { Instance } from '@/modules/instance'
+import { Instance, addInstance } from '@/modules/instance'
 
 import type { AxiosInstance } from 'axios'
 import type { MCSM_CONSTRUCTOR_CONFIG } from '@/types/index'
+import type { InstanceConfig } from '@/types/instance'
 
 /**
  * @class MCSM
@@ -48,6 +49,10 @@ export class MCSManagerClient {
     useInstance(InstanceUUID: string, daemon: string | Deamon) {
         daemon = typeof daemon === 'string' ? this.useDaemon(daemon) : daemon
         return new Instance(this.#request, InstanceUUID, daemon)
+    }
+
+    addInstance(data: InstanceConfig) {
+        return addInstance(this.#request, data)
     }
 }
 
