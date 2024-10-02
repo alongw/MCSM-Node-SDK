@@ -1,8 +1,8 @@
 import type { AxiosInstance } from 'axios'
-import type { Response } from '@/types/request'
+import type { Response } from './../types/request'
 
-import type { User } from '@/types/user'
-import type { Instance } from '@/types/instance'
+import type { User } from './../types/user'
+import type { Instance } from './../types/instance'
 
 export const getUserList = (
     request: AxiosInstance,

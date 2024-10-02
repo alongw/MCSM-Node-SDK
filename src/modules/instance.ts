@@ -1,5 +1,5 @@
 // import {} from '@/types/instance'
-import { Deamon } from '@/modules/daemon'
+import { Deamon } from './../modules/daemon'
 
 import {
     getInstanceDetail,
@@ -18,7 +18,7 @@ import {
 } from '@/apis/instance'
 
 import type { AxiosInstance } from 'axios'
-import type { InstanceConfig } from '@/types/instance'
+import type { InstanceConfig } from './../types/instance'
 
 export class Instance {
     #InstanceUUID: string

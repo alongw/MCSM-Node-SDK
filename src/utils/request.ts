@@ -1,8 +1,8 @@
 import axios, { type AxiosResponse } from 'axios'
 
-export * from '@/types/request'
+export * from './../types/request'
 
-import type { Response } from '@/types/request'
+import type { Response } from './../types/request'
 
 export const newRequest = (
     baseURL: string,

@@ -1,13 +1,13 @@
-import { parseConfig } from '@/utils/index'
-import { newRequest } from '@/utils/request'
-import { getOverview as getOverviewApi } from '@/apis/overview'
+import { parseConfig } from './utils/index'
+import { newRequest } from './utils/request'
+import { getOverview as getOverviewApi } from './apis/overview'
 
-import { Deamon, addDaemon, type CreateDaemonDate } from '@/modules/daemon'
-import { Instance, addInstance, multiWorkerInstance } from '@/modules/instance'
+import { Deamon, addDaemon, type CreateDaemonDate } from './modules/daemon'
+import { Instance, addInstance, multiWorkerInstance } from './modules/instance'
 
 import type { AxiosInstance } from 'axios'
-import type { MCSM_CONSTRUCTOR_CONFIG } from '@/types/index'
-import type { InstanceConfig } from '@/types/instance'
+import type { MCSM_CONSTRUCTOR_CONFIG } from './types/index'
+import type { InstanceConfig } from './types/instance'
 
 export class MCSManagerClient {
     #apikey: string

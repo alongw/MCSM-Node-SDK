@@ -5,11 +5,11 @@ import {
     updateDaemon,
     type CreateDaemonDate,
     type UpdateDaemonDate
-} from '@/apis/daemon'
+} from './../apis/daemon'
 
 import { AxiosInstance } from 'axios'
 
-export * from '@/types/daemon'
+export * from './../types/daemon'
 
 export class Deamon {
     #daemonUUID: string

@@ -4,8 +4,8 @@
  */
 
 import type { AxiosInstance } from 'axios'
-import type { Response } from '@/types/request'
-import type { Instance, InstanceConfig } from '@/types/instance'
+import type { Response } from './../types/request'
+import type { Instance, InstanceConfig } from './../types/instance'
 
 export const getInstanceDetail = (
     request: AxiosInstance,
