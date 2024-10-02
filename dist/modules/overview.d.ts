@@ -1,4 +1,4 @@
-import type { Overview as Overview_Type } from '@/types/overview';
+import type { Overview as Overview_Type } from './../types/overview';
 export declare class Overview {
     #private;
     constructor(overviewData: Overview_Type);

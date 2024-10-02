@@ -1,7 +1,7 @@
 import type { AxiosInstance } from 'axios';
-import type { Response } from '@/types/request';
-import type { User } from '@/types/user';
-import type { Instance } from '@/types/instance';
+import type { Response } from './../types/request';
+import type { User } from './../types/user';
+import type { Instance } from './../types/instance';
 export declare const getUserList: (request: AxiosInstance, config: {
     page: number;
     pageSize: number;

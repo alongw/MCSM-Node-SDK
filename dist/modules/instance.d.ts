@@ -1,13 +1,13 @@
-import { Deamon } from '@/modules/daemon';
+import { Deamon } from './../modules/daemon';
 import type { AxiosInstance } from 'axios';
-import type { InstanceConfig } from '@/types/instance';
+import type { InstanceConfig } from './../types/instance';
 export declare class Instance {
     #private;
     constructor(request: AxiosInstance, InstanceUUID: string, Daemon: Deamon);
     get InstanceUUID(): string;
     get DaemonUUID(): string;
     get useDaemon(): Deamon;
-    getInstanceDetail: () => Promise<import("axios").AxiosResponse<import("../types/request").Response<import("@/types/instance").Instance>, any>>;
+    getInstanceDetail: () => Promise<import("axios").AxiosResponse<import("../types/request").Response<import("./../types/instance").Instance>, any>>;
     updateInstanceConfig: (InstanceConfig: InstanceConfig) => Promise<import("axios").AxiosResponse<import("../types/request").Response<{
         instanceUuid: string;
     }>, any>>;

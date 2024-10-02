@@ -60,3 +60,5 @@ export class MCSManagerClient {
         return multiWorkerInstance(this.#request, instance, config)
     }
 }
+
+module.exports = MCSManagerClient

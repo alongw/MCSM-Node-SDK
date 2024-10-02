@@ -1,6 +1,6 @@
-import { type CreateDaemonDate, type UpdateDaemonDate } from '@/apis/daemon';
+import { type CreateDaemonDate, type UpdateDaemonDate } from './../apis/daemon';
 import { AxiosInstance } from 'axios';
-export * from '@/types/daemon';
+export * from './../types/daemon';
 export declare class Deamon {
     #private;
     constructor(request: AxiosInstance, daemonUUID: string);

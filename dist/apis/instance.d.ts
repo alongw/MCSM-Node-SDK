@@ -3,8 +3,8 @@
  * https://docs.mcsmanager.com/apis/api_instance.html
  */
 import type { AxiosInstance } from 'axios';
-import type { Response } from '@/types/request';
-import type { Instance, InstanceConfig } from '@/types/instance';
+import type { Response } from './../types/request';
+import type { Instance, InstanceConfig } from './../types/instance';
 export declare const getInstanceDetail: (request: AxiosInstance, instanceUUID: string, daemonUUID: string) => Promise<import("axios").AxiosResponse<Response<Instance>, any>>;
 export declare const createInstance: (request: AxiosInstance, daemonId: string, config: InstanceConfig) => Promise<import("axios").AxiosResponse<Response<{
     instanceUuid: string;
