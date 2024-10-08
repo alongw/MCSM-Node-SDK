@@ -1,8 +1,9 @@
 import type { AxiosInstance } from 'axios'
 import type { Response } from './../types/request'
 
-import type { User } from './../types/user'
-import type { Instance } from './../types/instance'
+import type { User, UpdateUserConfig } from './../types/user'
+
+export * from './../types/user'
 
 export const getUserList = (
     request: AxiosInstance,
@@ -46,18 +47,7 @@ export const createUser = (
 export const updateUser = (
     request: AxiosInstance,
     userId: string,
-    config: {
-        uuid: string
-        userName: string
-        loginTime: string
-        registerTime: string
-        permission: number
-        instances: Instance[]
-        apiKey: string
-        isInit: boolean
-        secret: string
-        open2FA: boolean
-    }
+    config: UpdateUserConfig
 ) => {
     return request.put<Response<boolean>>('/auth', {
         uuid: userId,

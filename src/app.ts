@@ -4,6 +4,7 @@ import { getOverview as getOverviewApi } from './apis/overview'
 
 import { Deamon, addDaemon, type CreateDaemonDate } from './modules/daemon'
 import { Instance, addInstance, multiWorkerInstance } from './modules/instance'
+import { batchDeleteUser, User, createUser, getUserList } from './modules/user'
 
 import type { AxiosInstance } from 'axios'
 import type { MCSM_CONSTRUCTOR_CONFIG } from './types/index'
@@ -59,6 +60,37 @@ export class MCSManagerClient {
     ) {
         return multiWorkerInstance(this.#request, instance, config)
     }
+
+    useUser(UserUUID: string) {
+        return new User(this.#request, UserUUID)
+    }
+
+    batchDeleteUser(user: string[] | User[] | User | string) {
+        if (Array.isArray(user)) {
+            user = user.map((item) => (typeof item === 'string' ? item : item.userUUID))
+        } else if (typeof user === 'object') {
+            user = [user.userUUID]
+        } else {
+            user = [user]
+        }
+
+        return batchDeleteUser(this.#request, user)
+    }
+
+    createUser(config: { username: string; password: string; permission: 1 | 10 | -1 }) {
+        return createUser(this.#request, config)
+    }
+
+    getUserList(config: {
+        page: number
+        pageSize: number
+        role?: 1 | 10 | -1
+        userName?: string
+    }) {
+        return getUserList(this.#request, config)
+    }
 }
 
-module.exports = MCSManagerClient
+// test code
+
+console.log(111)

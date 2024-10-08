@@ -1,3 +1,5 @@
+import type { Instance } from './instance'
+
 export interface UserInstance {
     instanceUuid: string // 实例的 UUID
     daemonId: string // 对应的守护进程 ID
@@ -17,4 +19,17 @@ export interface User {
     isInit: boolean // 是否是初始化状态
     secret: string // 保密字段
     open2FA: boolean // 是否开启双重验证
+}
+
+export interface UpdateUserConfig {
+    uuid: string
+    userName: string
+    loginTime: string
+    registerTime: string
+    permission: number
+    instances: Instance[]
+    apiKey: string
+    isInit: boolean
+    secret: string
+    open2FA: boolean
 }
