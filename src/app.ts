@@ -5,6 +5,7 @@ import { getOverview as getOverviewApi } from './apis/overview'
 import { Deamon, addDaemon, type CreateDaemonDate } from './modules/daemon'
 import { Instance, addInstance, multiWorkerInstance } from './modules/instance'
 import { batchDeleteUser, User, createUser, getUserList } from './modules/user'
+import { useImage } from './modules/image'
 
 import type { AxiosInstance } from 'axios'
 import type { MCSM_CONSTRUCTOR_CONFIG } from './types/index'
@@ -88,6 +89,11 @@ export class MCSManagerClient {
         userName?: string
     }) {
         return getUserList(this.#request, config)
+    }
+
+    useImage(daemon: string | Deamon) {
+        daemon = typeof daemon === 'string' ? this.useDaemon(daemon) : daemon
+        return useImage(this.#request, daemon.daemonUUID)
     }
 }
 
