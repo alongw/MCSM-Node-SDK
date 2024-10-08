@@ -69,11 +69,13 @@ if (result.status === 200) {
 
 ### Attention
 
-Do not use deconstruction assignment, otherwise the function will not work properly.
+⚠️ Do not use deconstruction assignment, otherwise the function will not work properly.
 
 ```ts
 const { getOverview, useDaemon, multiWorkerInstance } = mcsm // ❌
 ```
+
+⚠️ Some of the features are untested for the time being and can be turned on issue if you encounter problems. ~~( It's definitely not because I'm lazy. )~~
 
 ## More details
 
