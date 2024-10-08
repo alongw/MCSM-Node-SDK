@@ -1,4 +1,5 @@
 import fse from 'fs-extra'
+import { exec } from 'child_process'
 
 // 更新 package.json 中的版本号
 const updatePackageJson = async () => {
@@ -13,7 +14,6 @@ const updatePackageJson = async () => {
 
 // 使用 prettierrc 格式化 package.json
 const formatPackageJson = async () => {
-    const { exec } = require('child_process')
     exec('npx prettier --write package.json', (error: any, stdout: any, stderr: any) => {
         if (error) {
             console.error(`exec error: ${error}`)
@@ -31,7 +31,6 @@ const removeDist = async () => {
 
 // 运行 pnpm build:tsc
 const buildTsc = async () => {
-    const { exec } = require('child_process')
     exec('pnpm build:tsc', (error: any, stdout: any, stderr: any) => {
         if (error) {
             console.error(`exec error: ${error}`)
@@ -44,7 +43,6 @@ const buildTsc = async () => {
 
 // 运行 npm publish
 const publish = async () => {
-    const { exec } = require('child_process')
     exec('npm publish', (error: any, stdout: any, stderr: any) => {
         if (error) {
             console.error(`exec error: ${error}`)
@@ -55,8 +53,13 @@ const publish = async () => {
     })
 }
 
+console.log('update package.json version')
 await updatePackageJson()
+console.log('format package.json')
 await formatPackageJson()
+console.log('remove dist')
 await removeDist()
+console.log('build tsc')
 await buildTsc()
+console.log('publish')
 await publish()
