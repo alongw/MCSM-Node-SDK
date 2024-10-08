@@ -43,7 +43,9 @@ const buildTsc = async () => {
 
 // 运行 npm publish
 const publish = async () => {
-    exec('npm publish', (error: any, stdout: any, stderr: any) => {
+    const args = process.argv.slice(2)
+
+    exec(`npm publish --otp=${args[0] || ''}`, (error: any, stdout: any, stderr: any) => {
         if (error) {
             console.error(`exec error: ${error}`)
             return

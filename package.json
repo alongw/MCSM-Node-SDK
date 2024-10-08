@@ -1,6 +1,6 @@
 {
     "name": "mcsm-node-sdk",
-    "version": "1.1.1",
+    "version": "1.1.2",
     "description": "A Node.js SDK for MCSManager",
     "main": "./dist/app.js",
     "types": "./dist/app.d.ts",
@@ -23,7 +23,7 @@
         "start:ts": "ts-node-esm --experimental-specifier-resolution=node src/app.ts",
         "start:node": "node --es-module-specifier-resolution=node dist/app.js",
         "build:tsc": "tsc",
-        "publish": "tsx ./script/publish.ts"
+        "publish:npm": "tsx ./script/publish.ts"
     },
     "devDependencies": {
         "@types/axios": "^0.14.0",

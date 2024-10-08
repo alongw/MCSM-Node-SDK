@@ -67,6 +67,4 @@ export class MCSManagerClient {
         return useImage(this.#request, daemon.daemonUUID);
     }
 }
-// test code
-console.log(111);
 //# sourceMappingURL=app.js.map
