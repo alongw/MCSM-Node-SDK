@@ -1,3 +1,4 @@
+export * from './../types/user';
 export const getUserList = (request, config) => {
     return request.get('/auth/search', {
         params: config

@@ -1,7 +1,7 @@
 import type { AxiosInstance } from 'axios';
 import type { Response } from './../types/request';
-import type { User } from './../types/user';
-import type { Instance } from './../types/instance';
+import type { User, UpdateUserConfig } from './../types/user';
+export * from './../types/user';
 export declare const getUserList: (request: AxiosInstance, config: {
     page: number;
     pageSize: number;
@@ -23,16 +23,5 @@ export declare const createUser: (request: AxiosInstance, config: {
     userName: string;
     permission: 1 | 10 | -1;
 }>, any>>;
-export declare const updateUser: (request: AxiosInstance, userId: string, config: {
-    uuid: string;
-    userName: string;
-    loginTime: string;
-    registerTime: string;
-    permission: number;
-    instances: Instance[];
-    apiKey: string;
-    isInit: boolean;
-    secret: string;
-    open2FA: boolean;
-}) => Promise<import("axios").AxiosResponse<Response<boolean>, any>>;
+export declare const updateUser: (request: AxiosInstance, userId: string, config: UpdateUserConfig) => Promise<import("axios").AxiosResponse<Response<boolean>, any>>;
 export declare const removeUser: (request: AxiosInstance, userList: string[]) => Promise<import("axios").AxiosResponse<Response<boolean>, any>>;

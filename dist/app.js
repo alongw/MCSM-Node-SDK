@@ -3,6 +3,8 @@ import { newRequest } from './utils/request';
 import { getOverview as getOverviewApi } from './apis/overview';
 import { Deamon, addDaemon } from './modules/daemon';
 import { Instance, addInstance, multiWorkerInstance } from './modules/instance';
+import { batchDeleteUser, User, createUser, getUserList } from './modules/user';
+import { useImage } from './modules/image';
 export class MCSManagerClient {
     #apikey;
     #baseURL;
@@ -39,5 +41,32 @@ export class MCSManagerClient {
     multiWorkerInstance(instance, config) {
         return multiWorkerInstance(this.#request, instance, config);
     }
+    useUser(UserUUID) {
+        return new User(this.#request, UserUUID);
+    }
+    batchDeleteUser(user) {
+        if (Array.isArray(user)) {
+            user = user.map((item) => (typeof item === 'string' ? item : item.userUUID));
+        }
+        else if (typeof user === 'object') {
+            user = [user.userUUID];
+        }
+        else {
+            user = [user];
+        }
+        return batchDeleteUser(this.#request, user);
+    }
+    createUser(config) {
+        return createUser(this.#request, config);
+    }
+    getUserList(config) {
+        return getUserList(this.#request, config);
+    }
+    useImage(daemon) {
+        daemon = typeof daemon === 'string' ? this.useDaemon(daemon) : daemon;
+        return useImage(this.#request, daemon.daemonUUID);
+    }
 }
+// test code
+console.log(111);
 //# sourceMappingURL=app.js.map
