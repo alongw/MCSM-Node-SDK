@@ -24,9 +24,6 @@ npm install mcsm-node-sdk
 ```ts
 # ES Module
 import { MCSManagerClient } from 'mcsm-node-sdk'
-
-# CommonJS
-const { MCSManagerClient } = require('mcsm-node-sdk')
 ```
 
 ### Initialize MCSManagerClient 
