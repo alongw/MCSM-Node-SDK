@@ -15,12 +15,14 @@ export class MCSManagerClient {
     #apikey: string
     #baseURL: string
     #request: AxiosInstance
+    #auto_catch_http_error: boolean
 
     constructor(config: MCSM_CONSTRUCTOR_CONFIG) {
         const { api_key, panel_url, auto_catch_http_error } = parseConfig(config)
         this.#apikey = api_key
         this.#baseURL = panel_url
         this.#request = newRequest(this.#baseURL, this.#apikey, auto_catch_http_error)
+        this.#auto_catch_http_error = auto_catch_http_error
     }
 
     get request() {
